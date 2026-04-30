@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Contact · Team 302{% endblock %}
+
+{% block content %}
+
+<section class="contact-page">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="section-tag">Get in Touch</span>
+            <h2 class="section-title">Contact Us</h2>
+            <p class="section-desc">언제든 편하게 연락주세요. 함께 성장할 수 있는 분을 환영합니다.</p>
+        </div>
+
+        <div class="row g-4">
+            {% for m in members %}
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 120 }}">
+                <div class="contact-card-v2" style="--mc: {{ m.color }}; --mcd: {{ m.color_dark }};">
+                    <img src="{{ m.image }}" alt="{{ m.name }}" class="contact-avatar">
+                    <h4>{{ m.name }}</h4>
+                    <p class="contact-role">{{ m.role }}</p>
+
+                    <div class="contact-rows">
+                        <div class="contact-row">
+                            <i class="bi bi-envelope-fill"></i>
+                            <a href="mailto:{{ m.email }}">{{ m.email }}</a>
+                        </div>
+                        {% if m.phone %}
+                        <div class="contact-row">
+                            <i class="bi bi-telephone-fill"></i>
+                            <a href="tel:{{ m.phone }}">{{ m.phone }}</a>
+                        </div>
+                        {% endif %}
+                        {% if m.github %}
+                        <div class="contact-row">
+                            <i class="bi bi-github"></i>
+                            <a href="{{ m.github }}" target="_blank">{{ m.github.replace('https://', '') }}</a>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <a href="{{ url_for('member_detail', member_id=m.id) }}" class="contact-detail-btn">
+                        프로필 보기 <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="team-contact-card mt-5" data-aos="fade-up">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h3>팀에 직접 연락하기</h3>
+                    <p class="mb-md-0">
+                        프로젝트 협업, 코드 리뷰, 오픈소스 기여 제안은 언제든 환영합니다.
+                        팀 공통 채널을 통해 빠르게 답변드리겠습니다.
+                    </p>
+                </div>
+                <div class="col-md-4 text-md-end">
+                    <div class="team-contact-info">
+                        <div><i class="bi bi-building"></i> 동국대학교</div>
+                        <div><i class="bi bi-clock"></i> 평일 9:00 - 18:00</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
