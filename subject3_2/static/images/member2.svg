@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="100%" stop-color="#047857"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" fill="url(#bg2)"/>
+  <circle cx="100" cy="80" r="32" fill="#fff"/>
+  <path d="M 50 180 Q 50 130 100 130 Q 150 130 150 180 Z" fill="#fff"/>
+  <text x="100" y="195" text-anchor="middle" fill="#fff" font-family="Arial" font-size="13" font-weight="bold">ML ENGINEER</text>
+</svg>

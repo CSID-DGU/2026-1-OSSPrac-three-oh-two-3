@@ -1,0 +1,212 @@
+{% extends "base.html" %}
+{% block title %}Team 302 · {{ team.tagline }}{% endblock %}
+
+{% block content %}
+
+<!-- ============ HERO ============ -->
+<section class="hero-section">
+    <div class="hero-bg">
+        <div class="hero-blob blob-1"></div>
+        <div class="hero-blob blob-2"></div>
+        <div class="hero-blob blob-3"></div>
+        <div class="hero-grid"></div>
+    </div>
+
+    <div class="container hero-container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-7" data-aos="fade-right">
+                <span class="hero-badge">
+                    <i class="bi bi-stars me-1"></i>
+                    Open Source Software Project · 2026
+                </span>
+                <h1 class="hero-title">
+                    {{ team.tagline }}<br>
+                    <span class="gradient-text">in one team.</span>
+                </h1>
+                <p class="hero-desc">{{ team.description }}</p>
+
+                <div class="hero-actions">
+                    <a href="#team" class="btn-primary-custom">
+                        팀원 만나기 <i class="bi bi-arrow-right ms-2"></i>
+                    </a>
+                    <a href="#architecture" class="btn-outline-custom">
+                        <i class="bi bi-diagram-3 me-2"></i>아키텍처
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
+                <div class="hero-card">
+                    <div class="floating-card card-1">
+                        <i class="bi bi-bar-chart-fill"></i>
+                        <span>Statistics</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="bi bi-cpu-fill"></i>
+                        <span>Machine Learning</span>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="bi bi-code-slash"></i>
+                        <span>Web Frontend</span>
+                    </div>
+                    <div class="hero-center">
+                        <div class="hero-center-inner">
+                            <i class="bi bi-hexagon-fill"></i>
+                            <h3>302</h3>
+                            <p>Team Members</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ STATS ============ -->
+<section class="stats-section">
+    <div class="container">
+        <div class="row g-3">
+            {% for s in team.stats %}
+            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
+                <div class="stat-card">
+                    <div class="stat-value" data-target="{{ s.value }}">{{ s.value }}</div>
+                    <div class="stat-label">{{ s.label }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ============ PROJECT INTRO ============ -->
+<section id="project" class="section-space">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="section-tag">About Project</span>
+            <h2 class="section-title">프로젝트 소개</h2>
+            <p class="section-desc">통계 · ML · 웹, 세 가지 강점이 만나는 곳</p>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+                <div class="feature-card">
+                    <div class="feature-icon" style="--c:#3b82f6;">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+                    <h4>Data Analytics</h4>
+                    <p>통계 분석과 시각화로 데이터 속 인사이트를 발견합니다. SPSS, R, Python 기반 분석 경험을 보유합니다.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card">
+                    <div class="feature-icon" style="--c:#06b6d4;">
+                        <i class="bi bi-cpu"></i>
+                    </div>
+                    <h4>Machine Learning</h4>
+                    <p>Random Forest, GBM, XGBoost 등 다양한 모델로 의료, 공공, 교통 등 실전 문제를 해결합니다.</p>
+                </div>
+            </div>
+            <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-card">
+                    <div class="feature-icon" style="--c:#a855f7;">
+                        <i class="bi bi-window-stack"></i>
+                    </div>
+                    <h4>Web Development</h4>
+                    <p>Flask, HTML/CSS, JavaScript 기반의 사용자 친화적인 웹 인터페이스를 구축합니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ ARCHITECTURE ============ -->
+<section id="architecture" class="section-space pt-0">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="section-tag">Tech Stack</span>
+            <h2 class="section-title">시스템 아키텍처</h2>
+            <p class="section-desc">오픈소스 기반의 안정적인 웹 서비스 구조</p>
+        </div>
+
+        <div class="arch-wrapper" data-aos="zoom-in">
+            <div class="arch-flow">
+                <div class="arch-node">
+                    <div class="node-icon"><i class="bi bi-person-circle"></i></div>
+                    <strong>User</strong>
+                    <span>Browser</span>
+                </div>
+                <div class="arch-arrow"><i class="bi bi-chevron-right"></i></div>
+                <div class="arch-node">
+                    <div class="node-icon"><i class="bi bi-window"></i></div>
+                    <strong>Frontend</strong>
+                    <span>HTML · CSS · JS</span>
+                </div>
+                <div class="arch-arrow"><i class="bi bi-chevron-right"></i></div>
+                <div class="arch-node">
+                    <div class="node-icon"><i class="bi bi-hdd-network"></i></div>
+                    <strong>Nginx</strong>
+                    <span>Reverse Proxy</span>
+                </div>
+                <div class="arch-arrow"><i class="bi bi-chevron-right"></i></div>
+                <div class="arch-node">
+                    <div class="node-icon"><i class="bi bi-gear-wide-connected"></i></div>
+                    <strong>Gunicorn</strong>
+                    <span>WSGI Server</span>
+                </div>
+                <div class="arch-arrow"><i class="bi bi-chevron-right"></i></div>
+                <div class="arch-node highlight">
+                    <div class="node-icon"><i class="bi bi-braces"></i></div>
+                    <strong>Flask</strong>
+                    <span>Python App</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section id="team" class="section-space">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="section-tag">Our Team</span>
+            <h2 class="section-title">팀원 소개</h2>
+            <p class="section-desc">서로 다른 강점을 가진 3명이 모여 하나의 팀이 됩니다</p>
+        </div>
+
+        <div class="row g-4">
+            {% for m in members %}
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 120 }}">
+                <a href="{{ url_for('member_detail', member_id=m.id) }}" class="member-link">
+                    <div class="member-card" style="--mc: {{ m.color }}; --mcd: {{ m.color_dark }};">
+                        <div class="member-banner">
+                            <span class="member-tag">{{ m.tag }}</span>
+                        </div>
+                        <div class="member-body">
+                            <img src="{{ m.image }}" alt="{{ m.name }}" class="member-avatar">
+                            <h4 class="member-name">{{ m.name }}</h4>
+                            <p class="member-en">{{ m.english_name }}</p>
+                            <p class="member-role">{{ m.role }}</p>
+                            <p class="member-intro">{{ m.intro }}</p>
+
+                            <div class="member-skills-mini">
+                                {% for s in m.skills[:5] %}
+                                <img src="{{ s.logo }}" alt="{{ s.name }}" title="{{ s.name }}">
+                                {% endfor %}
+                                {% if m.skills|length > 5 %}
+                                <span class="more-skills">+{{ m.skills|length - 5 }}</span>
+                                {% endif %}
+                            </div>
+
+                            <div class="member-cta">
+                                상세 프로필 보기 <i class="bi bi-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock %}
