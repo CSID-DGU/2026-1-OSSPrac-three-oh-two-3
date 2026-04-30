@@ -11,11 +11,12 @@ def result():
     if request.method =='POST':
        result=dict()
        result['Name']=request.form.get('Name')
-       
-       # 추가: 체크박스 여러개 → join으로 문자열 변환
+       result['StudentNumber'] = request.form.get('StudentNumber')
+       result['Gender'] = request.form.get('gender')            
+       result['Major'] = request.form.get('major')
        result['languages'] =  ','.join(request.form.getlist('languages'))  
        
        return render_template('result.html',result=result)
 
 if __name__ =='__main__':
-     app.run(debug=True)
+     app.run(debug=True, port=5003)
