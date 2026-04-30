@@ -1,0 +1,7 @@
+# Python cache
+__pycache__/
+*.pyc
+.mypy_cache/
+
+# Virtual environment
+.flask1/
