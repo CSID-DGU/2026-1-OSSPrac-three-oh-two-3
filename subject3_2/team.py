@@ -15,10 +15,37 @@ TEAM_INFO = {
     ),
     "stats": [
         {"value": "3",  "label": "Members"},
-        {"value": "2",  "label": "Majors"},
+        {"value": "3",  "label": "Majors"},
         {"value": "8+", "label": "Projects"},
-        {"value": "10+","label": "Tech Stack"},
-    ]
+        {"value": "10+", "label": "Tech Stack"},
+    ],
+    "name_origin": {
+        "code": "302",
+        "status": "Found",
+        "headline": "302 Found — 우리가 만난 자리",
+        "summary": (
+            "팀명 \"302\"는 HTTP 상태 코드 302 Found(리다이렉트)에서 따왔습니다. "
+            "사용자의 요청을 더 적합한 자원으로 안내하듯, 통계 · 머신러닝 · 웹이라는 "
+            "서로 다른 길이 한 페이지에서 자연스럽게 연결되는 팀을 지향합니다."
+        ),
+        "points": [
+            {
+                "icon": "bi-arrow-left-right",
+                "title": "Redirect, Not Reject",
+                "desc": "막히면 거절하지 않고 더 나은 경로로 전환합니다. 데이터에서 모델로, 모델에서 사용자에게."
+            },
+            {
+                "icon": "bi-people-fill",
+                "title": "3명, 0갈등, 2배 성과",
+                "desc": "3 · 0 · 2 — 세 명이 모여 충돌 없이 시너지를 만들고자 하는 다짐을 코드에 새겼습니다."
+            },
+            {
+                "icon": "bi-link-45deg",
+                "title": "Found",
+                "desc": "각자가 가진 강점이 서로의 약점을 메우는 지점, 그곳이 바로 302가 가리키는 Location입니다."
+            }
+        ]
+    }
 }
 
 # ============================================================
@@ -66,8 +93,8 @@ TEAM_MEMBERS = [
         "email": "wlgh02211@gmail.com",
         "phone": None,
         "image": "https://i.pravatar.cc/400?img=33",
-        "color": "#3b82f6",
-        "color_dark": "#1e40af"
+        "color": "#0f766e",
+        "color_dark": "#134e4a"
     },
     {
         "id": 2,
@@ -131,8 +158,8 @@ TEAM_MEMBERS = [
         "email": "2022110488@naver.com",
         "phone": "010-6748-0213",
         "image": "https://i.pravatar.cc/400?img=12",
-        "color": "#06b6d4",
-        "color_dark": "#0e7490"
+        "color": "#ea580c",
+        "color_dark": "#9a3412"
     },
     {
         "id": 3,
@@ -182,8 +209,8 @@ TEAM_MEMBERS = [
         "email": "jm11n@naver.com",
         "phone": "010-7501-8059",
         "image": "https://i.pravatar.cc/400?img=68",
-        "color": "#a855f7",
-        "color_dark": "#7e22ce"
+        "color": "#e11d48",
+        "color_dark": "#9f1239"
     }
 ]
 
@@ -219,4 +246,4 @@ def contact():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    app.run(host="0.0.0.0", port=5003, debug=True)

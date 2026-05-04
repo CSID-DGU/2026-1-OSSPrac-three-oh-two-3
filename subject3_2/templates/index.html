@@ -53,7 +53,7 @@
                         <div class="hero-center-inner">
                             <i class="bi bi-hexagon-fill"></i>
                             <h3>302</h3>
-                            <p>Team Members</p>
+                            <p>HTTP Found</p>
                         </div>
                     </div>
                 </div>
@@ -78,6 +78,50 @@
     </div>
 </section>
 
+<!-- ============ TEAM NAME ORIGIN ============ -->
+{% if team.name_origin %}
+<section id="origin" class="section-space">
+    <div class="container">
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="section-tag">Why 302?</span>
+            <h2 class="section-title">팀명 "302"의 유래</h2>
+            <p class="section-desc">{{ team.name_origin.headline }}</p>
+        </div>
+
+        <div class="row g-4 align-items-stretch">
+            <div class="col-lg-5" data-aos="fade-right">
+                <div class="origin-code-card">
+                    <div class="origin-status-line">
+                        <span class="origin-method">HTTP/1.1</span>
+                        <span class="origin-code">{{ team.name_origin.code }}</span>
+                        <span class="origin-status-text">{{ team.name_origin.status }}</span>
+                    </div>
+                    <div class="origin-header">
+                        <span class="origin-header-key">Location:</span>
+                        <span class="origin-header-val">/team/302</span>
+                    </div>
+                    <p class="origin-summary">{{ team.name_origin.summary }}</p>
+                </div>
+            </div>
+
+            <div class="col-lg-7" data-aos="fade-left" data-aos-delay="100">
+                <div class="origin-points">
+                    {% for p in team.name_origin.points %}
+                    <div class="origin-point">
+                        <div class="origin-point-icon"><i class="bi {{ p.icon }}"></i></div>
+                        <div class="origin-point-body">
+                            <h5>{{ p.title }}</h5>
+                            <p>{{ p.desc }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+
 <!-- ============ PROJECT INTRO ============ -->
 <section id="project" class="section-space">
     <div class="container">
@@ -90,7 +134,7 @@
         <div class="row g-4">
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
                 <div class="feature-card">
-                    <div class="feature-icon" style="--c:#3b82f6;">
+                    <div class="feature-icon" style="--c:#0f766e;">
                         <i class="bi bi-graph-up-arrow"></i>
                     </div>
                     <h4>Data Analytics</h4>
@@ -99,7 +143,7 @@
             </div>
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="feature-card">
-                    <div class="feature-icon" style="--c:#06b6d4;">
+                    <div class="feature-icon" style="--c:#ea580c;">
                         <i class="bi bi-cpu"></i>
                     </div>
                     <h4>Machine Learning</h4>
@@ -108,7 +152,7 @@
             </div>
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="feature-card">
-                    <div class="feature-icon" style="--c:#a855f7;">
+                    <div class="feature-icon" style="--c:#e11d48;">
                         <i class="bi bi-window-stack"></i>
                     </div>
                     <h4>Web Development</h4>
