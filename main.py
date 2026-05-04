@@ -1,2 +1,0 @@
-print("2026-1 OSS실습 : 전동현")
-print("Hello World!")

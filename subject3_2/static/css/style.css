@@ -1824,3 +1824,347 @@ main,
 
 /* Ensure the deepest cube is slightly translucent so it reads as "far" */
 .space-cube--c { opacity: 0.65; }
+
+
+/* =====================================================================
+   ⬇  DUBAI REDESIGN  ⬇
+   Hero + About 영역에만 두바이 영상 배경, 그 아래는 기존 흰/다크 톤 유지
+   ===================================================================== */
+
+/* ---------- 영상 배경 (fixed, 첫 두 섹션에서만 노출) ---------- */
+body.has-video-bg .video-bg-wrap {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+body.has-video-bg .video-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+}
+
+body.has-video-bg .video-bg-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.75) 100%);
+}
+
+/* 첫 두 섹션 동안에만 영상이 보이도록 — 그 아래 섹션은 솔리드 배경으로 가림 */
+body.has-video-bg main {
+    position: relative;
+    z-index: 1;
+}
+
+/* ---------- 시네마틱 Hero ---------- */
+.hero-cinematic {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    background: transparent;
+    padding: 120px 0 80px;
+    overflow: hidden;
+}
+
+.hero-cinematic-inner {
+    width: 100%;
+}
+
+.hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 999px;
+    backdrop-filter: blur(12px);
+    background: rgba(255,255,255,0.05);
+    margin-bottom: 32px;
+}
+
+.eyebrow-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4ade80;
+    box-shadow: 0 0 12px #4ade80;
+    animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+.hero-cinematic-title {
+    font-family: "Pretendard", sans-serif;
+    font-size: clamp(3.5rem, 10vw, 8.5rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin: 0 0 28px;
+    color: #fff;
+    text-shadow: 0 6px 40px rgba(0,0,0,0.5);
+}
+
+.hero-cinematic-sub {
+    font-size: clamp(1rem, 1.8vw, 1.35rem);
+    font-weight: 400;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.85);
+    max-width: 640px;
+    margin: 0 0 48px;
+    text-shadow: 0 2px 16px rgba(0,0,0,0.6);
+}
+
+.hero-cinematic-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.btn-cinematic {
+    display: inline-flex;
+    align-items: center;
+    padding: 16px 32px;
+    font-family: "Pretendard", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0a0a0a;
+    background: #fff;
+    border: 1px solid #fff;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.btn-cinematic:hover {
+    background: rgba(255,255,255,0.85);
+    transform: translateY(-2px);
+    color: #0a0a0a;
+}
+
+.btn-cinematic.ghost {
+    background: transparent;
+    color: #fff;
+    border-color: rgba(255,255,255,0.4);
+}
+
+.btn-cinematic.ghost:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(255,255,255,0.7);
+    color: #fff;
+}
+
+.hero-scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255,255,255,0.6);
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.hero-scroll-hint .scroll-line {
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.6) 0%, transparent 100%);
+    animation: scrollLine 2.4s ease-in-out infinite;
+}
+
+@keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+}
+
+/* ---------- About (영상 위 glass 섹션) ---------- */
+.about-cinematic {
+    position: relative;
+    padding: 120px 0;
+    color: #fff;
+    background: transparent;
+}
+
+.cinematic-tag {
+    display: inline-block;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+.about-cinematic-title {
+    font-family: "Pretendard", sans-serif;
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin: 0 0 24px;
+    text-shadow: 0 4px 24px rgba(0,0,0,0.5);
+}
+
+.about-cinematic-desc {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.85);
+    max-width: 540px;
+}
+
+.glass-stat {
+    padding: 32px 28px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+}
+
+.glass-stat:hover {
+    background: rgba(255,255,255,0.13);
+    border-color: rgba(255,255,255,0.3);
+    transform: translateY(-4px);
+}
+
+.glass-stat-value {
+    font-family: "Pretendard", sans-serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+.glass-stat-label {
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+/* ---------- 영상 → 흰 배경 자연스러운 전환 ---------- */
+.video-to-light-transition {
+    position: relative;
+    height: 120px;
+    background: linear-gradient(180deg, transparent 0%, var(--bg, #fff) 100%);
+}
+
+/* 그 아래 모든 섹션은 솔리드 배경 (영상을 가림) */
+body.has-video-bg main > section:not(.hero-cinematic):not(.about-cinematic) {
+    background: var(--bg, #fff);
+    position: relative;
+}
+
+body.has-video-bg footer.site-footer {
+    position: relative;
+    background: var(--bg, #fff);
+}
+
+/* ---------- 다크모드에서도 영상 위 텍스트는 그대로 (대비 우선) ---------- */
+[data-bs-theme="dark"] .hero-cinematic-title,
+[data-bs-theme="dark"] .about-cinematic-title,
+[data-bs-theme="dark"] .glass-stat-value {
+    color: #fff;
+}
+
+/* ---------- 모바일 최적화 ---------- */
+@media (max-width: 768px) {
+    body.has-video-bg .video-bg-wrap {
+        position: absolute;
+        height: 200vh;
+    }
+    .hero-cinematic {
+        min-height: 90vh;
+        padding: 100px 0 60px;
+    }
+    .hero-cinematic-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .btn-cinematic {
+        justify-content: center;
+    }
+    .about-cinematic {
+        padding: 80px 0;
+    }
+}
+
+/* prefers-reduced-motion 사용자 배려 */
+@media (prefers-reduced-motion: reduce) {
+    body.has-video-bg .video-bg {
+        display: none;
+    }
+    body.has-video-bg .video-bg-wrap {
+        background: #0a0a0a;
+    }
+}
+
+/* ---------- 영상 배경 페이지에서 네비게이션 투명 처리 ---------- */
+body.has-video-bg .glass-navbar {
+    background: transparent !important;
+    border-bottom: 1px solid transparent;
+    box-shadow: none !important;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+}
+
+/* 흰 배경 영역까지 스크롤되면 navbar에 살짝 글래스 처리해 가독성 확보 */
+body.has-video-bg.nav-scrolled .glass-navbar {
+    background: rgba(10, 10, 10, 0.4) !important;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* 영상 위 네비게이션 글자/아이콘은 흰색 톤 */
+body.has-video-bg .glass-navbar .navbar-brand,
+body.has-video-bg .glass-navbar .nav-link,
+body.has-video-bg .glass-navbar .brand-text,
+body.has-video-bg .glass-navbar .theme-toggle {
+    color: #fff;
+}
+
+body.has-video-bg .glass-navbar .nav-link:hover,
+body.has-video-bg .glass-navbar .nav-link.active {
+    color: #fff;
+    opacity: 0.85;
+}
+
+body.has-video-bg .glass-navbar .navbar-toggler {
+    border-color: rgba(255,255,255,0.3);
+}
+
+body.has-video-bg .glass-navbar .navbar-toggler-icon {
+    filter: invert(1) brightness(2);
+}
