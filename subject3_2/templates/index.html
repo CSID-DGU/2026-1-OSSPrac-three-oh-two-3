@@ -3,80 +3,112 @@
 
 {% block content %}
 
-<!-- ============ HERO ============ -->
-<section class="hero-section">
-    <div class="hero-bg">
-        <div class="hero-blob blob-1"></div>
-        <div class="hero-blob blob-2"></div>
-        <div class="hero-blob blob-3"></div>
-        <div class="hero-grid"></div>
+<!-- ============ HERO (두바이 영상 위 시네마틱 인트로) ============ -->
+<section class="hero-cinematic">
+    <div class="hero-cinematic-inner">
+        <div class="container">
+            <div class="hero-eyebrow" data-aos="fade-up">
+                <span class="eyebrow-dot"></span>
+                HTTP/1.1 · 302 Found
+            </div>
+            <h1 class="hero-cinematic-title" data-aos="fade-up" data-aos-delay="100">
+                302 Found.
+            </h1>
+            <p class="hero-cinematic-sub" data-aos="fade-up" data-aos-delay="200">
+                우리가 만난 자리 — 데이터, 머신러닝, 웹.<br>
+                세 갈래의 길이 한 페이지로 리다이렉트되는 곳.
+            </p>
+            <div class="hero-cinematic-actions" data-aos="fade-up" data-aos-delay="300">
+                <a href="#team" class="btn-cinematic">
+                    Members <i class="bi bi-arrow-down-right ms-2"></i>
+                </a>
+                <a href="{{ url_for('contact') }}" class="btn-cinematic ghost">
+                    Contact
+                </a>
+            </div>
+        </div>
     </div>
 
-    <div class="container hero-container">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-7" data-aos="fade-right">
-                <span class="hero-badge">
-                    <i class="bi bi-stars me-1"></i>
-                    Open Source Software Project · 2026
-                </span>
-                <h1 class="hero-title">
-                    {{ team.tagline }}<br>
-                    <span class="gradient-text">in one team.</span>
-                </h1>
-                <p class="hero-desc">{{ team.description }}</p>
+    <div class="hero-scroll-hint">
+        <span>Scroll</span>
+        <span class="scroll-line"></span>
+    </div>
+</section>
 
-                <div class="hero-actions">
-                    <a href="#team" class="btn-primary-custom">
-                        팀원 만나기 <i class="bi bi-arrow-right ms-2"></i>
-                    </a>
-                    <a href="#architecture" class="btn-outline-custom">
-                        <i class="bi bi-diagram-3 me-2"></i>아키텍처
-                    </a>
-                </div>
+<!-- ============ ABOUT (영상 위 glass 섹션) ============ -->
+<section class="about-cinematic">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6" data-aos="fade-right">
+                <span class="cinematic-tag">About Team 302</span>
+                <h2 class="about-cinematic-title">
+                    {{ team.tagline }}
+                </h2>
+                <p class="about-cinematic-desc">{{ team.description }}</p>
             </div>
 
-            <div class="col-lg-5" data-aos="fade-left" data-aos-delay="200">
-                <div class="hero-card">
-                    <div class="floating-card card-1">
-                        <i class="bi bi-bar-chart-fill"></i>
-                        <span>Statistics</span>
-                    </div>
-                    <div class="floating-card card-2">
-                        <i class="bi bi-cpu-fill"></i>
-                        <span>Machine Learning</span>
-                    </div>
-                    <div class="floating-card card-3">
-                        <i class="bi bi-code-slash"></i>
-                        <span>Web Frontend</span>
-                    </div>
-                    <div class="hero-center">
-                        <div class="hero-center-inner">
-                            <i class="bi bi-hexagon-fill"></i>
-                            <h3>302</h3>
-                            <p>Team Members</p>
+            <div class="col-lg-6" data-aos="fade-left" data-aos-delay="150">
+                <div class="row g-3">
+                    {% for s in team.stats %}
+                    <div class="col-6">
+                        <div class="glass-stat">
+                            <div class="glass-stat-value">{{ s.value }}</div>
+                            <div class="glass-stat-label">{{ s.label }}</div>
                         </div>
                     </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ============ STATS ============ -->
-<section class="stats-section">
+<!-- 영상 → 흰 배경 자연스러운 전환 -->
+<div class="video-to-light-transition"></div>
+
+<!-- ============ TEAM NAME ORIGIN ============ -->
+{% if team.name_origin %}
+<section id="origin" class="section-space">
     <div class="container">
-        <div class="row g-3">
-            {% for s in team.stats %}
-            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
-                <div class="stat-card">
-                    <div class="stat-value" data-target="{{ s.value }}">{{ s.value }}</div>
-                    <div class="stat-label">{{ s.label }}</div>
+        <div class="text-center mb-5" data-aos="fade-up">
+            <span class="section-tag">Why 302?</span>
+            <h2 class="section-title">팀명 "302"의 유래</h2>
+            <p class="section-desc">{{ team.name_origin.headline }}</p>
+        </div>
+
+        <div class="row g-4 align-items-stretch">
+            <div class="col-lg-5" data-aos="fade-right">
+                <div class="origin-code-card">
+                    <div class="origin-status-line">
+                        <span class="origin-method">HTTP/1.1</span>
+                        <span class="origin-code">{{ team.name_origin.code }}</span>
+                        <span class="origin-status-text">{{ team.name_origin.status }}</span>
+                    </div>
+                    <div class="origin-header">
+                        <span class="origin-header-key">Location:</span>
+                        <span class="origin-header-val">/team/302</span>
+                    </div>
+                    <p class="origin-summary">{{ team.name_origin.summary }}</p>
                 </div>
             </div>
-            {% endfor %}
+
+            <div class="col-lg-7" data-aos="fade-left" data-aos-delay="100">
+                <div class="origin-points">
+                    {% for p in team.name_origin.points %}
+                    <div class="origin-point">
+                        <div class="origin-point-icon"><i class="bi {{ p.icon }}"></i></div>
+                        <div class="origin-point-body">
+                            <h5>{{ p.title }}</h5>
+                            <p>{{ p.desc }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 </section>
+{% endif %}
 
 <!-- ============ PROJECT INTRO ============ -->
 <section id="project" class="section-space">
@@ -90,7 +122,7 @@
         <div class="row g-4">
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
                 <div class="feature-card">
-                    <div class="feature-icon" style="--c:#3b82f6;">
+                    <div class="feature-icon" style="--c:#0f766e;">
                         <i class="bi bi-graph-up-arrow"></i>
                     </div>
                     <h4>Data Analytics</h4>
@@ -99,7 +131,7 @@
             </div>
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                 <div class="feature-card">
-                    <div class="feature-icon" style="--c:#06b6d4;">
+                    <div class="feature-icon" style="--c:#ea580c;">
                         <i class="bi bi-cpu"></i>
                     </div>
                     <h4>Machine Learning</h4>
@@ -108,7 +140,7 @@
             </div>
             <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                 <div class="feature-card">
-                    <div class="feature-icon" style="--c:#a855f7;">
+                    <div class="feature-icon" style="--c:#e11d48;">
                         <i class="bi bi-window-stack"></i>
                     </div>
                     <h4>Web Development</h4>

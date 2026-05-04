@@ -102,3 +102,13 @@ document.querySelectorAll('a[href*="#"]').forEach((a) => {
         }
     });
 });
+// 영상 배경 페이지에서 스크롤 위치에 따라 네비 투명/글래스 토글
+(function () {
+    if (!document.body.classList.contains("has-video-bg")) return;
+    const onScroll = () => {
+        const trigger = window.innerHeight * 0.85;
+        document.body.classList.toggle("nav-scrolled", window.scrollY > trigger);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+})();

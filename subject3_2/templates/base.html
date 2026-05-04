@@ -24,7 +24,18 @@
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-<body>
+<body class="{% if active_page == 'home' %}has-video-bg{% endif %}">
+
+{% if active_page == 'home' %}
+<!-- 두바이 영상 배경 (Hero + About 영역 동안만 노출) -->
+<div class="video-bg-wrap" aria-hidden="true">
+    <video class="video-bg" autoplay muted loop playsinline
+           poster="{{ url_for('static', filename='images/dubai_poster.jpg') }}">
+        <source src="{{ url_for('static', filename='videos/dubai.mp4') }}" type="video/mp4">
+    </video>
+    <div class="video-bg-overlay"></div>
+</div>
+{% endif %}
 
 <!-- 스크롤 진행도 바 -->
 <div id="scrollProgress"></div>

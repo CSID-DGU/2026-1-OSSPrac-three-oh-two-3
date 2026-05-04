@@ -5,3 +5,7 @@ __pycache__/
 
 # Virtual environment
 .flask1/
+
+# macOS
+.DS_Store
+**/.DS_Store
