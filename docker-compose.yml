@@ -1,0 +1,8 @@
+services:
+  app:
+    build: .
+    image: jiho0221/team302:latest
+    container_name: team302-web
+    ports:
+      - "8000:80"
+    restart: unless-stopped
