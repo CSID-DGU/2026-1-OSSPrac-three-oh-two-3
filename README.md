@@ -181,12 +181,6 @@ git clone https://github.com/CSID-DGU/2026-1-OSSPrac-three-oh-two-3.git
 cd 2026-1-OSSPrac-three-oh-two-3
 ```
 
-프로젝트 안에 `Team Project` 폴더가 있는 경우:
-
-```bash
-cd "Team Project"
-```
-
 ---
 
 ### 2. Docker로 실행하기
